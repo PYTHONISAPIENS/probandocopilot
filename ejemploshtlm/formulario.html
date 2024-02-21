@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario</title>
+    <style>
+        body {
+            background-color: rgb(206, 250, 245);
+            font-family: "Calibri Light", sans-serif;
+            font-size: 18px;
+            color: black;
+        }
+
+        h1 {
+            background-color: rgb(7, 113, 142);
+            color: white;
+            font-family: "Calibri Light", sans-serif;
+            font-size: 24px;
+            padding: 10px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="date"],
+        input[type="time"],
+        input[type="number"] {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #0d4f67;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>👩‍🔬BIENVENIDA🌸🍃</h1>
+
+    <form>
+        <label for="fecha">FECHA:</label>
+        <input type="date" id="fecha" required>
+
+        <label for="hora">HORA:</label>
+        <input type="time" id="hora" required>
+
+        <label for="presion_sistolica">PRESIÓN SISTÓLICA:</label>
+        <input type="number" id="presion_sistolica" required>
+
+        <label for="presion_diastolica">PRESIÓN DIASTÓLICA:</label>
+        <input type="number" id="presion_diastolica" required>
+
+        <label for="frecuencia_cardiaca">FRECUENCIA CARDIACA:</label>
+        <input type="number" id="frecuencia_cardiaca" required>
+
+        <input type="submit" value="Enviar" onclick="mostrarAlerta(event)">
+    </form>
+
+    <script>
+        let registroNumero = 1;
+
+        function mostrarAlerta(event) {
+            event.preventDefault();
+
+            const fecha = document.getElementById("fecha").value;
+            const hora = document.getElementById("hora").value;
+            const presionSistolica = document.getElementById("presion_sistolica").value;
+            const presionDiastolica = document.getElementById("presion_diastolica").value;
+            const frecuenciaCardiaca = document.getElementById("frecuencia_cardiaca").value;
+
+            const mensaje = `Fecha: ${fecha}\nHora: ${hora}\nPresión Sistólica: ${presionSistolica}\nPresión Diastólica: ${presionDiastolica}\nFrecuencia Cardiaca: ${frecuenciaCardiaca}`;
+
+            const confirmar = confirm(mensaje);
+
+            if (confirmar) {
+                alert(`Se ha creado registro número ${registroNumero}`);
+                registroNumero++;
+                limpiarFormulario();
+            }
+        }
+
+        function limpiarFormulario() {
+            document.getElementById("fecha").value = "";
+            document.getElementById("hora").value = "";
+            document.getElementById("presion_sistolica").value = "";
+            document.getElementById("presion_diastolica").value = "";
+            document.getElementById("frecuencia_cardiaca").value = "";
+        }
+    </script>
+</body>
+</html>
